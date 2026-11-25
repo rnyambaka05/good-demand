@@ -1,0 +1,4689 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Good Demand | Custom AI Agents for Roofing Companies</title>
+
+<meta name="description" content="Good Demand builds custom AI agents that capture leads, follow up with homeowners, and book roof inspections around the clock.">
+
+<meta name="theme-color" content="#090b17">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================
+   GLOBAL STYLES
+========================================= */
+
+:root {
+    --background: #090b17;
+    --background-secondary: #0e1222;
+    --panel: #14192c;
+    --panel-light: #1a2036;
+    --purple: #8b36f5;
+    --purple-light: #bd91ff;
+    --blue: #3278ff;
+    --white: #ffffff;
+    --text: #f5f5ff;
+    --muted: #b2b9ce;
+    --border: rgba(255,255,255,.11);
+    --header-height: 135px;
+
+    --gradient: linear-gradient(
+        110deg,
+        #a75aff,
+        #7275ff,
+        #438aff
+    );
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-height) + 20px);
+}
+
+body {
+    background: var(--background);
+    color: var(--text);
+    font-family: "Inter", Arial, sans-serif;
+    line-height: 1.65;
+    overflow-x: hidden;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button, input {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--purple-light);
+    outline-offset: 4px;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+section {
+    padding: 95px 0;
+}
+
+h1, h2, h3 {
+    line-height: 1.15;
+    letter-spacing: -.045em;
+}
+
+h1 {
+    font-size: clamp(42px, 5.7vw, 82px);
+    font-weight: 800;
+}
+
+h2 {
+    font-size: clamp(32px, 4vw, 54px);
+    font-weight: 800;
+}
+
+h3 {
+    font-size: 23px;
+    font-weight: 700;
+}
+
+p {
+    color: var(--muted);
+}
+
+.container {
+    width: min(1240px, 92%);
+    margin: 0 auto;
+}
+
+.gradient-text {
+    background: var(--gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.section-heading {
+    max-width: 850px;
+    margin: 0 auto 45px;
+    text-align: center;
+}
+
+.section-heading h2 {
+    margin-bottom: 16px;
+}
+
+.section-heading p {
+    font-size: 18px;
+    max-width: 730px;
+    margin: auto;
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 25px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    color: white;
+
+    background: linear-gradient(
+        110deg,
+        #9333f6,
+        #6737df
+    );
+
+    font-weight: 700;
+    line-height: 1.4;
+    transition: transform .2s, filter .2s;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.12);
+}
+
+.button-blue {
+    background: #2867e9;
+}
+
+.button-outline {
+    background: rgba(255,255,255,.08);
+    border-color: rgba(255,255,255,.45);
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.center-button {
+    text-align: center;
+    margin-top: 35px;
+}
+
+/* =========================================
+   ANNOUNCEMENT BAR AND HEADER
+========================================= */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(9,11,23,.97);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+}
+
+.announcement {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    padding: 11px 18px;
+    border: none;
+
+    background: linear-gradient(
+        100deg,
+        #7826df,
+        #533bd9
+    );
+
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.announcement span {
+    font-size: 22px;
+    line-height: 1;
+    transition: transform .2s;
+}
+
+.announcement:hover span {
+    transform: translateX(4px);
+}
+
+.navigation {
+    width: min(1460px,94%);
+    min-height: 94px;
+    margin: auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+
+.logo {
+    display: block;
+    width: 300px;
+    flex-shrink: 0;
+}
+
+.logo img {
+    height: 80px;
+    object-fit: contain;
+    object-position: left center;
+}
+
+.navigation-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 26px;
+}
+
+.navigation-links a {
+    color: #e7e7f5;
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.navigation-links a:hover {
+    color: var(--purple-light);
+}
+
+.navigation-cta {
+    white-space: nowrap;
+    font-size: 14px;
+}
+
+.mobile-menu {
+    display: none;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 28px;
+}
+
+/* =========================================
+   HERO SECTION
+
+   Real roofing job-site photography
+========================================= */
+
+.hero {
+    min-height: calc(100svh - var(--header-height));
+    position: relative;
+    isolation: isolate;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    overflow: hidden;
+    padding: 65px 0;
+
+    background: #101727;
+}
+
+.hero-image {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center 45%;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(9,11,23,.35),
+            rgba(9,11,23,.61) 45%,
+            rgba(9,11,23,.94) 100%
+        ),
+        radial-gradient(
+            ellipse at center,
+            rgba(9,11,23,.35),
+            transparent 85%
+        );
+}
+
+.hero-content {
+    max-width: 1050px;
+    margin: auto;
+}
+
+.hero-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 9px 20px;
+    margin-bottom: 25px;
+
+    border: 1px solid rgba(189,145,255,.65);
+    border-radius: 100px;
+
+    background: rgba(47,24,79,.8);
+
+    color: #e9d9ff;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.hero h1 {
+    margin-bottom: 25px;
+}
+
+.hero p {
+    max-width: 760px;
+    margin: 0 auto 35px;
+    font-size: clamp(18px,2vw,22px);
+    color: #e0e3ef;
+}
+
+/* =========================================
+   VIDEO DEMONSTRATION
+========================================= */
+
+.demo-section {
+    background: var(--background-secondary);
+}
+
+.video-container {
+    width: min(1020px,100%);
+    aspect-ratio: 16 / 9;
+    margin: auto;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: #04060e;
+    overflow: hidden;
+}
+
+.video-container iframe,
+.video-container video {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+/* =========================================
+   AI AGENT CAROUSEL
+========================================= */
+
+.agents-section {
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            ellipse at 80% 90%,
+            rgba(99,43,200,.12),
+            transparent 65%
+        ),
+        #101425;
+
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.agents-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 35px;
+}
+
+.agents-heading h2 {
+    margin-bottom: 12px;
+}
+
+.agents-heading p {
+    font-size: 17px;
+}
+
+.carousel-controls {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.carousel-control {
+    width: 48px;
+    height: 48px;
+    border: 1px solid #494364;
+    border-radius: 50%;
+    background: #201b36;
+    color: white;
+    font-size: 28px;
+    transition: background .2s;
+}
+
+.carousel-control:hover {
+    background: #6030a0;
+}
+
+.carousel-viewport {
+    width: min(1520px,96%);
+    margin: auto;
+    overflow: hidden;
+    touch-action: pan-y;
+
+    mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 2%,
+        black 97%,
+        transparent
+    );
+}
+
+.carousel-track {
+    display: flex;
+    gap: 22px;
+    width: max-content;
+    will-change: transform;
+}
+
+.agent-card {
+    flex-shrink: 0;
+    width: clamp(290px,26vw,405px);
+
+    display: flex;
+    flex-direction: column;
+
+    background: #161b30;
+    border: 1px solid rgba(170,124,255,.21);
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+/* Preserve full square agent artwork */
+
+.agent-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    background: #100b28;
+}
+
+.agent-body {
+    padding: 25px;
+
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+}
+
+.agent-body h3 {
+    margin-bottom: 12px;
+}
+
+.agent-body p {
+    margin-bottom: 25px;
+    font-size: 15px;
+    min-height: 75px;
+}
+
+.agent-body .button {
+    width: 100%;
+    margin-top: auto;
+    font-size: 14px;
+}
+
+/* Pause control hidden unless keyboard-focused */
+
+.accessible-pause {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+}
+
+.accessible-pause:focus-visible {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
+    background: var(--panel);
+    color: white;
+    border: 1px solid var(--border);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* =========================================
+   CUSTOMER JOURNEY
+========================================= */
+
+.journey-flow {
+    display: grid;
+
+    grid-template-columns:
+        1fr 42px
+        1fr 42px
+        1fr;
+
+    gap: 10px;
+    align-items: center;
+}
+
+.journey-card {
+    align-self: stretch;
+    overflow: hidden;
+
+    background: linear-gradient(
+        145deg,
+        #1b2037,
+        #111528
+    );
+
+    border: 1px solid var(--border);
+    border-radius: 19px;
+}
+
+.journey-card img {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: contain;
+    background: #e1e9f6;
+}
+
+.journey-card-content {
+    padding: 25px;
+}
+
+.journey-card-content h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.journey-card-content p {
+    font-size: 15px;
+}
+
+.flow-arrow {
+    font-size: 35px;
+    font-weight: 600;
+    color: var(--purple-light);
+    text-align: center;
+}
+
+.down-arrow {
+    display: block;
+    margin: 14px auto;
+    text-align: center;
+    font-size: 36px;
+    color: var(--purple-light);
+}
+
+.journey-result {
+    max-width: 900px;
+    margin: auto;
+    padding: 36px 25px;
+    text-align: center;
+
+    background: linear-gradient(
+        120deg,
+        #24143e,
+        #172c50
+    );
+
+    border: 1px solid #7150b477;
+    border-radius: 20px;
+}
+
+.journey-result h3 {
+    font-size: clamp(26px,3vw,37px);
+    margin-bottom: 25px;
+}
+
+/* =========================================
+   CUSTOM AI AGENTS
+========================================= */
+
+.custom-section {
+    background: var(--background-secondary);
+    border-block: 1px solid var(--border);
+}
+
+.split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 65px;
+    align-items: center;
+}
+
+.split-image {
+    overflow: hidden;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: #101425;
+}
+
+.split-image img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.split-content h2 {
+    margin-bottom: 23px;
+}
+
+.split-content p {
+    font-size: 18px;
+    margin-bottom: 22px;
+}
+
+.feature-list {
+    list-style: none;
+    display: grid;
+    gap: 15px;
+    margin: 25px 0 30px;
+}
+
+.feature-list li {
+    position: relative;
+    padding-left: 25px;
+    color: #e0e0f0;
+}
+
+.feature-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    font-weight: 800;
+    color: var(--purple-light);
+}
+
+/* =========================================
+   FREE RESOURCES
+========================================= */
+
+.resources-section {
+    background: #101425;
+    border-block: 1px solid var(--border);
+}
+
+.resource {
+    padding: 48px 0;
+}
+
+.resource + .resource {
+    border-top: 1px solid var(--border);
+}
+
+.resource-image {
+    border-radius: 20px;
+    overflow: hidden;
+    background: #0d1020;
+    border: 1px solid var(--border);
+}
+
+.resource-image img {
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
+}
+
+.resource-reverse .resource-image {
+    order: 2;
+}
+
+.eyebrow {
+    color: var(--purple-light);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .09em;
+    margin-bottom: 15px;
+}
+
+.resource h2 {
+    font-size: clamp(31px,3.7vw,47px);
+    margin-bottom: 20px;
+}
+
+.resource p {
+    font-size: 18px;
+    margin-bottom: 26px;
+}
+
+/* =========================================
+   FAQ
+========================================= */
+
+.faq-container {
+    max-width: 850px;
+    margin: auto;
+}
+
+.faq-item {
+    border-top: 1px solid var(--border);
+    padding: 23px 0;
+}
+
+.faq-item:last-child {
+    border-bottom: 1px solid var(--border);
+}
+
+.faq-item summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+    list-style: none;
+
+    font-weight: 700;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item summary::after {
+    content: "+";
+    color: var(--purple-light);
+    font-size: 25px;
+    line-height: 1;
+}
+
+.faq-item[open] summary::after {
+    content: "−";
+}
+
+.faq-item p {
+    padding-top: 15px;
+    max-width: 760px;
+}
+
+/* =========================================
+   FINAL CTA AND CALENDLY
+========================================= */
+
+.contact-section {
+    background:
+        radial-gradient(
+            ellipse at 10% 20%,
+            rgba(131,35,237,.17),
+            transparent 55%
+        ),
+        radial-gradient(
+            ellipse at 90% 80%,
+            rgba(44,91,224,.15),
+            transparent 55%
+        ),
+        #101325;
+
+    border-top: 1px solid var(--border);
+}
+
+.contact-section .section-heading {
+    margin-bottom: 35px;
+}
+
+.calendar-wrapper {
+    width: min(1100px,100%);
+    margin: auto;
+    overflow: hidden;
+    border-radius: 18px;
+    background: white;
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 70px rgba(0,0,0,.2);
+}
+
+.calendar-wrapper iframe {
+    width: 100%;
+    height: 750px;
+    display: block;
+    border: none;
+}
+
+.calendar-fallback {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.calendar-fallback a {
+    color: var(--purple-light);
+    text-decoration: underline;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    padding: 55px 0 120px;
+    background: #070912;
+    border-top: 1px solid var(--border);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 45px;
+}
+
+.footer-logo {
+    max-width: 275px;
+    margin-bottom: 15px;
+}
+
+.footer-grid h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    letter-spacing: -.02em;
+}
+
+.footer-links a,
+.footer-links button {
+    display: block;
+    padding: 0;
+    margin: 10px 0;
+
+    border: none;
+    background: none;
+
+    color: var(--muted);
+    text-align: left;
+    font-size: 14px;
+}
+
+.footer-links a:hover,
+.footer-links button:hover {
+    color: var(--purple-light);
+}
+
+.copyright {
+    margin-top: 35px;
+    padding-top: 23px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* =========================================
+   PROMOTIONAL POPUP
+========================================= */
+
+dialog {
+    position: fixed;
+    margin: auto;
+    width: min(880px,94vw);
+    max-height: 90dvh;
+    padding: 0;
+
+    border-radius: 22px;
+    border: 1px solid rgba(160,109,255,.45);
+
+    background: #15192e;
+    color: white;
+    overflow: auto;
+
+    box-shadow: 0 20px 100px rgba(0,0,0,.6);
+}
+
+dialog::backdrop {
+    background: rgba(0,0,0,.73);
+    backdrop-filter: blur(5px);
+}
+
+.popup-close {
+    position: absolute;
+    right: 13px;
+    top: 13px;
+    z-index: 5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.2);
+
+    background: #101426;
+    color: white;
+
+    font-size: 25px;
+    line-height: 1;
+
+    outline: none;
+    box-shadow: none;
+}
+
+.popup-close:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.popup-close:focus-visible {
+    outline: 1px solid #cfc4ff;
+    outline-offset: 2px;
+}
+
+.popup-layout {
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    align-items: center;
+    gap: 25px;
+    padding: 32px;
+}
+
+.popup-layout h2 {
+    font-size: clamp(30px,4vw,43px);
+    margin-bottom: 18px;
+}
+
+.popup-layout p {
+    margin-bottom: 23px;
+}
+
+.popup-layout .button {
+    width: 100%;
+}
+
+.popup-image {
+    height: 100%;
+    min-height: 350px;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.popup-image.resource-art {
+    object-fit: contain;
+    background: #0c1021;
+}
+
+.small-dialog {
+    width: min(500px,94vw);
+    padding: 35px;
+}
+
+.small-dialog h2 {
+    margin: 15px 0 20px;
+    font-size: 32px;
+}
+
+.small-dialog p {
+    margin-bottom: 25px;
+}
+
+/* =========================================
+   MADISON CHAT LAUNCHER
+
+   Original size and design preserved.
+========================================= */
+
+.chat-dock {
+    position: fixed;
+    right: 25px;
+    bottom: 24px;
+    z-index: 150;
+
+    display: grid;
+    justify-items: end;
+    gap: 13px;
+}
+
+.chat-launcher {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 10px 22px 10px 10px;
+
+    border-radius: 100px;
+    border: 1px solid #7559ac;
+
+    background: #1d2239;
+    color: white;
+    text-align: left;
+
+    box-shadow: 0 8px 35px rgba(0,0,0,.4);
+}
+
+.avatar-wrapper {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.avatar {
+    width: 57px;
+    height: 57px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.avatar-wrapper::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    width: 14px;
+    height: 14px;
+
+    border: 2px solid #1d2239;
+    border-radius: 50%;
+    background: #36d889;
+}
+
+.chat-launcher strong {
+    display: block;
+    font-size: 17px;
+}
+
+.chat-launcher small {
+    display: block;
+    color: #b7dec7;
+    font-size: 14px;
+}
+
+.chat-invite {
+    position: relative;
+    width: min(300px,85vw);
+    background: white;
+    color: #171a2a;
+    border-radius: 14px;
+    box-shadow: 0 8px 35px rgba(0,0,0,.25);
+}
+
+.invite-message {
+    border: none;
+    background: transparent;
+    color: #171a2a;
+
+    padding: 18px 32px 18px 17px;
+
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.invite-dismiss {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+
+    background: transparent;
+    border: none;
+    color: #555;
+    font-size: 20px;
+}
+
+.chat-invite::after {
+    content: "";
+    position: absolute;
+    right: 35px;
+    bottom: -8px;
+    width: 16px;
+    height: 16px;
+    background: white;
+    transform: rotate(45deg);
+}
+
+/* =========================================
+   MADISON CHAT WINDOW
+========================================= */
+
+.chat-window {
+    position: fixed;
+    right: 25px;
+    bottom: 115px;
+    z-index: 151;
+
+    width: min(395px,calc(100vw - 30px));
+    height: min(570px,calc(100dvh - 145px));
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    border: 1px solid #65558d;
+    border-radius: 20px;
+    background: #f5f6fb;
+
+    box-shadow: 0 15px 65px rgba(0,0,0,.4);
+}
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 17px;
+
+    background: linear-gradient(
+        120deg,
+        #251b45,
+        #1b284c
+    );
+
+    color: white;
+}
+
+.chat-header .avatar {
+    width: 46px;
+    height: 46px;
+}
+
+.chat-header strong {
+    font-size: 17px;
+}
+
+.chat-header small {
+    display: block;
+    font-size: 12px;
+    color: #d6cee8;
+}
+
+.chat-header button {
+    margin-left: auto;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 26px;
+}
+
+.chat-messages {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    padding: 17px;
+}
+
+.message {
+    align-self: flex-start;
+    max-width: 88%;
+    padding: 12px 14px;
+
+    border-radius: 14px 14px 14px 4px;
+
+    background: #e5e7ef;
+    color: #242634;
+    font-size: 14px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.message.user {
+    align-self: flex-end;
+    background: #6339e5;
+    color: white;
+    border-radius: 14px 14px 4px 14px;
+}
+
+.quick-replies {
+    display: grid;
+    gap: 8px;
+    justify-items: start;
+}
+
+.quick-replies button,
+.chat-action {
+    border-radius: 9px;
+    padding: 9px 12px;
+
+    background: white;
+    color: #5831c5;
+
+    border: 1px solid #d5c9f2;
+
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+}
+
+.quick-replies button:hover,
+.chat-action:hover {
+    background: #ede6ff;
+}
+
+.quick-replies button:disabled {
+    opacity: .5;
+    cursor: default;
+}
+
+.chat-action {
+    align-self: flex-start;
+}
+
+/* =========================================
+   MADISON TYPING INDICATOR
+========================================= */
+
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    min-height: 42px;
+    padding: 14px 18px;
+}
+
+.typing-indicator span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #8f86a8;
+
+    animation: typing 1.3s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: .18s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: .36s;
+}
+
+@keyframes typing {
+
+    0%,60%,100% {
+        transform: translateY(0);
+        opacity: .5;
+    }
+
+    30% {
+        transform: translateY(-5px);
+        opacity: 1;
+    }
+
+}
+
+.chat-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 12px;
+    background: white;
+    border-top: 1px solid #e0e2ec;
+}
+
+.chat-form input {
+    flex: 1;
+    width: 0;
+    padding: 11px 12px;
+
+    border-radius: 10px;
+    border: 1px solid #d8dae3;
+
+    background: white;
+    color: #222;
+    font-size: 13px;
+}
+
+.chat-form button {
+    width: 42px;
+    height: 42px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #7041df;
+    color: white;
+    font-size: 22px;
+}
+
+.chat-disclosure {
+    padding: 7px 10px;
+    text-align: center;
+    background: white;
+    color: #747887;
+    font-size: 10px;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width:1150px) {
+
+    .logo {
+        width: 245px;
+    }
+
+    .navigation-links {
+        gap: 17px;
+    }
+
+    .navigation-links a {
+        font-size: 13px;
+    }
+
+    .navigation-cta {
+        padding: 13px 17px;
+    }
+
+    .split-layout {
+        gap: 40px;
+    }
+
+}
+
+@media (max-width:900px) {
+
+    section {
+        padding: 65px 0;
+    }
+
+    .navigation {
+        min-height: 78px;
+    }
+
+    .logo {
+        width: 240px;
+        max-width: 65vw;
+    }
+
+    .logo img {
+        height: 64px;
+    }
+
+    .mobile-menu {
+        display: block;
+    }
+
+    .navigation-cta {
+        display: none;
+    }
+
+    .navigation-links {
+        display: none;
+
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+
+        padding: 25px;
+        background: #14192d;
+
+        align-items: flex-start;
+        flex-direction: column;
+
+        border-bottom: 1px solid var(--border);
+    }
+
+    .navigation-links.open {
+        display: flex;
+    }
+
+    .navigation-links a {
+        font-size: 16px;
+    }
+
+    .hero {
+        padding: 55px 0;
+    }
+
+    .hero-image {
+        object-position: 60% center;
+    }
+
+    .split-layout,
+    .popup-layout,
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .resource-reverse .resource-image {
+        order: 0;
+    }
+
+    .journey-flow {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+        margin: auto;
+        gap: 12px;
+    }
+
+    .flow-arrow {
+        transform: rotate(90deg);
+    }
+
+    .agent-card {
+        width: min(79vw,370px);
+    }
+
+    .agents-heading {
+        align-items: flex-start;
+    }
+
+    .carousel-control {
+        width: 39px;
+        height: 39px;
+        font-size: 24px;
+    }
+
+    .popup-layout {
+        padding: 27px;
+    }
+
+    .popup-image {
+        min-height: 0;
+        height: 230px;
+        object-position: center;
+    }
+
+    .calendar-wrapper iframe {
+        height: 900px;
+    }
+
+}
+
+@media (max-width:550px) {
+
+    .announcement {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    .announcement span {
+        font-size: 19px;
+    }
+
+    .hero h1 {
+        font-size: clamp(32px,9vw,43px);
+    }
+
+    .hero-pill {
+        font-size: 12px;
+        padding: 8px 13px;
+    }
+
+    .hero .button-group {
+        flex-direction: column;
+    }
+
+    .hero .button {
+        width: 100%;
+        max-width: 330px;
+    }
+
+    .section-heading p {
+        font-size: 16px;
+    }
+
+    .agents-heading p {
+        font-size: 15px;
+    }
+
+    .chat-dock {
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .chat-window {
+        right: 15px;
+        bottom: 102px;
+    }
+
+    /* Original mobile Madison sizing */
+
+    .chat-launcher .avatar {
+        width: 48px;
+        height: 48px;
+    }
+
+    .chat-launcher strong {
+        font-size: 15px;
+    }
+
+    .chat-launcher small {
+        font-size: 13px;
+    }
+
+    .agent-body p {
+        min-height: 85px;
+    }
+
+    .calendar-wrapper {
+        border-radius: 12px;
+    }
+
+}
+
+@media (prefers-reduced-motion:reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header class="site-header" id="siteHeader">
+
+    <button class="announcement" data-resource="playbook">
+
+        Get Your Free Roofing Sales Playbook
+
+        <span aria-hidden="true">→</span>
+
+    </button>
+
+    <div class="navigation">
+
+        <a class="logo" href="#home">
+
+            <img
+                src="assets/logo.png"
+                alt="Good Demand"
+            >
+
+        </a>
+
+        <nav
+            class="navigation-links"
+            id="navigationLinks"
+            aria-label="Main navigation">
+
+            <a href="#solutions">Our Solutions</a>
+
+            <a href="#how-it-works">How It Works</a>
+
+            <a href="#resources">Free Resources</a>
+
+            <a href="#faq">FAQ</a>
+
+            <a href="#contact">Contact</a>
+
+        </nav>
+
+        <a class="button navigation-cta" href="#contact">
+
+            Book Your Free AI Audit →
+
+        </a>
+
+        <button
+            class="mobile-menu"
+            id="mobileMenu"
+            aria-label="Open navigation"
+            aria-expanded="false">
+
+            ☰
+
+        </button>
+
+    </div>
+
+</header>
+
+<main>
+
+<!-- =========================================
+     HERO SECTION
+
+     NEW ROOFING PHOTOGRAPH
+========================================= -->
+
+<section class="hero" id="home">
+
+    <img
+        class="hero-image"
+        src="https://images.pexels.com/photos/33404080/pexels-photo-33404080.jpeg?auto=compress&cs=tinysrgb&w=2400"
+        alt="Roofing contractors working on a residential roof"
+        fetchpriority="high"
+    >
+
+    <div class="container hero-content">
+
+        <div class="hero-pill">
+
+            Custom AI Agents for Roofing Companies
+
+        </div>
+
+        <h1>
+
+            Book More Roofing Jobs With Your Own
+
+            <span class="gradient-text">
+
+                Custom AI Agents.
+
+            </span>
+
+        </h1>
+
+        <p>
+
+            We build custom AI agents that capture leads,
+            follow up with homeowners, and book roof
+            inspections around the clock.
+
+        </p>
+
+        <div class="button-group">
+
+            <a class="button" href="#contact">
+
+                Book Your Free AI Audit
+
+            </a>
+
+            <a class="button button-outline" href="#demo">
+
+                See AI in Action
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+     DEMONSTRATION VIDEO
+========================================= -->
+
+<section class="demo-section" id="demo">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <h2>
+
+                See What AI Can Do for Your
+
+                <span class="gradient-text">
+
+                    Roofing Business.
+
+                </span>
+
+            </h2>
+
+            <p>
+
+                Watch how our AI agents handle customer
+                inquiries and book inspections automatically.
+
+            </p>
+
+        </div>
+
+        <!--
+            Add your demonstration video URL
+            in CONFIG at the bottom of this file.
+
+            No placeholder image is used.
+        -->
+
+        <div
+            class="video-container"
+            id="videoContainer"
+            aria-label="AI agent demonstration">
+        </div>
+
+        <div class="center-button">
+
+            <a class="button" href="#contact">
+
+                Book Your Free AI Audit →
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+     MEET YOUR AI AGENTS
+========================================= -->
+
+<section class="agents-section" id="solutions">
+
+    <div class="container agents-heading">
+
+        <div>
+
+            <h2>
+
+                Meet Your
+
+                <span class="gradient-text">
+
+                    AI Agents.
+
+                </span>
+
+            </h2>
+
+            <p>
+
+                Custom AI agents that work together to turn
+                more customer inquiries into booked inspections.
+
+            </p>
+
+        </div>
+
+        <div class="carousel-controls">
+
+            <button
+                class="carousel-control"
+                id="previousAgent"
+                aria-label="Previous AI agent">
+
+                ‹
+
+            </button>
+
+            <button
+                class="carousel-control"
+                id="nextAgent"
+                aria-label="Next AI agent">
+
+                ›
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="carousel-viewport" id="agentViewport">
+
+        <div class="carousel-track" id="agentTrack">
+
+            <!-- Cards generated automatically -->
+
+        </div>
+
+    </div>
+
+    <button
+        class="accessible-pause"
+        id="pauseCarousel"
+        aria-pressed="false">
+
+        Pause carousel
+
+    </button>
+
+</section>
+
+<!-- =========================================
+     CUSTOMER JOURNEY
+========================================= -->
+
+<section id="how-it-works">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <h2>
+
+                Your Customers Call.
+
+                <span class="gradient-text">
+
+                    Your AI Agents Handle the Rest.
+
+                </span>
+
+            </h2>
+
+            <p>
+
+                See how our AI agents work together to turn
+                a customer inquiry into a booked roofing inspection.
+
+            </p>
+
+        </div>
+
+        <div class="journey-flow">
+
+            <article class="journey-card">
+
+                <img
+                    src="assets/homeowner-call.png"
+                    alt="Homeowner calling about missing shingles and roof damage"
+                    loading="lazy"
+                >
+
+                <div class="journey-card-content">
+
+                    <h3>A Homeowner Calls</h3>
+
+                    <p>
+
+                        A potential customer contacts your roofing
+                        company about a problem with their roof.
+
+                    </p>
+
+                </div>
+
+            </article>
+
+            <div class="flow-arrow" aria-hidden="true">
+
+                →
+
+            </div>
+
+            <article class="journey-card">
+
+                <img
+                    src="assets/ai-receptionist.png"
+                    alt="AI receptionist handling a roofing inquiry"
+                    loading="lazy"
+                >
+
+                <div class="journey-card-content">
+
+                    <h3>Your AI Agents Get to Work</h3>
+
+                    <p>
+
+                        Your agents answer the call, qualify the
+                        homeowner and schedule a roof inspection.
+
+                    </p>
+
+                </div>
+
+            </article>
+
+            <div class="flow-arrow" aria-hidden="true">
+
+                →
+
+            </div>
+
+            <article class="journey-card">
+
+                <img
+                    src="assets/inspection-booked.png"
+                    alt="Roofing contractor receiving a new inspection booking"
+                    loading="lazy"
+                >
+
+                <div class="journey-card-content">
+
+                    <h3>Your Team Gets Notified</h3>
+
+                    <p>
+
+                        Receive the customer's information and
+                        appointment details automatically.
+
+                    </p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+        <span class="down-arrow" aria-hidden="true">
+
+            ↓
+
+        </span>
+
+        <div class="journey-result">
+
+            <h3>
+
+                More Inspections. More Roofing Jobs.
+
+                <span class="gradient-text">
+
+                    More Revenue.
+
+                </span>
+
+            </h3>
+
+            <a href="#contact" class="button button-blue">
+
+                Book Your Free AI Audit →
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+     CUSTOM AI AGENTS
+========================================= -->
+
+<section class="custom-section" id="custom">
+
+    <div class="container split-layout">
+
+        <div class="split-image">
+
+            <img
+                src="https://images.pexels.com/photos/38028508/pexels-photo-38028508.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                alt="Roofing business operations"
+                loading="lazy"
+            >
+
+        </div>
+
+        <div class="split-content">
+
+            <h2>
+
+                AI Agents Built Specifically for
+
+                <span class="gradient-text">
+
+                    Your Roofing Company.
+
+                </span>
+
+            </h2>
+
+            <p>
+
+                We build, connect and manage custom AI agents
+                around the way your roofing company actually works.
+                No generic software to figure out yourself.
+
+            </p>
+
+            <ul class="feature-list">
+
+                <li>
+
+                    Customized to your services and service areas.
+
+                </li>
+
+                <li>
+
+                    Built around your customer qualification
+                    and booking process.
+
+                </li>
+
+                <li>
+
+                    Connected to your compatible CRM and calendar.
+
+                </li>
+
+                <li>
+
+                    Ongoing maintenance and support.
+
+                </li>
+
+            </ul>
+
+            <a href="#contact" class="button">
+
+                Build My AI Agents →
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+     FREE RESOURCES
+========================================= -->
+
+<section class="resources-section" id="resources">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <h2>
+
+                Free Resources to Help Your
+
+                <span class="gradient-text">
+
+                    Roofing Business Grow.
+
+                </span>
+
+            </h2>
+
+            <p>
+
+                Practical tools to book more inspections,
+                convert more leads and generate more revenue.
+
+            </p>
+
+        </div>
+
+        <!-- Roofing Revenue Calculator -->
+
+        <article class="resource split-layout">
+
+            <div class="resource-image">
+
+                <img
+                    src="assets/revenue-calculator.jpg"
+                    alt="Roofing Revenue Calculator"
+                    loading="lazy"
+                >
+
+            </div>
+
+            <div>
+
+                <div class="eyebrow">
+
+                    FREE INTERACTIVE TOOL
+
+                </div>
+
+                <h2>
+
+                    Roofing Revenue
+
+                    <span class="gradient-text">
+
+                        Calculator.
+
+                    </span>
+
+                </h2>
+
+                <p>
+
+                    Discover how much additional revenue your
+                    roofing company could generate by converting
+                    more of your existing calls and leads
+                    into roofing jobs.
+
+                </p>
+
+                <button
+                    class="button button-blue"
+                    data-resource="calculator">
+
+                    Calculate My Revenue →
+
+                </button>
+
+            </div>
+
+        </article>
+
+        <!-- Missed Call Automation -->
+
+        <article class="resource resource-reverse split-layout">
+
+            <div class="resource-image">
+
+                <img
+                    src="assets/missed-call-automation.jpg"
+                    alt="Automated missed call text conversation"
+                    loading="lazy"
+                >
+
+            </div>
+
+            <div>
+
+                <div class="eyebrow">
+
+                    FREE AUTOMATION
+
+                </div>
+
+                <h2>
+
+                    Missed Call
+
+                    <span class="gradient-text">
+
+                        Automation.
+
+                    </span>
+
+                </h2>
+
+                <p>
+
+                    Learn how to automatically follow up
+                    with missed callers and turn more customer
+                    conversations into booked roof inspections.
+
+                </p>
+
+                <button
+                    class="button button-blue"
+                    data-resource="automation">
+
+                    Get My Free Automation →
+
+                </button>
+
+            </div>
+
+        </article>
+
+        <!-- Roofing Sales Playbook -->
+
+        <article class="resource split-layout">
+
+            <div class="resource-image">
+
+                <img
+                    src="assets/roofing-sales-playbook.jpg"
+                    alt="Roofing Sales Playbook"
+                    loading="lazy"
+                >
+
+            </div>
+
+            <div>
+
+                <div class="eyebrow">
+
+                    FREE SALES PLAYBOOK
+
+                </div>
+
+                <h2>
+
+                    The Roofing
+
+                    <span class="gradient-text">
+
+                        Sales Playbook.
+
+                    </span>
+
+                </h2>
+
+                <p>
+
+                    Get the scripts, follow-up templates and
+                    strategies you need to turn more of your
+                    existing roofing leads into paying customers.
+
+                </p>
+
+                <button
+                    class="button button-blue"
+                    data-resource="playbook">
+
+                    Get My Free Playbook →
+
+                </button>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+     FREQUENTLY ASKED QUESTIONS
+========================================= -->
+
+<section id="faq">
+
+    <div class="container faq-container">
+
+        <div class="section-heading">
+
+            <h2>Frequently Asked Questions</h2>
+
+            <p>
+
+                Everything you need to know about getting
+                custom AI agents for your roofing company.
+
+            </p>
+
+        </div>
+
+        <div id="faqList"></div>
+
+        <div class="center-button">
+
+            <button class="button button-outline" data-chat>
+
+                Ask Madison a Question
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+     FINAL CTA AND EMBEDDED CALENDLY
+========================================= -->
+
+<section class="contact-section" id="contact">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <h2>
+
+                Ready to Book
+
+                <span class="gradient-text">
+
+                    More Roofing Jobs?
+
+                </span>
+
+            </h2>
+
+            <p>
+
+                Discover how custom AI agents can help your
+                roofing company capture more opportunities
+                and increase revenue.
+
+            </p>
+
+        </div>
+
+        <div class="calendar-wrapper">
+
+            <iframe
+                id="bookingCalendar"
+                title="Book your free Good Demand AI audit"
+                src="https://calendly.com/randy-gooddemandhq/30min?hide_gdpr_banner=1"
+                loading="lazy">
+            </iframe>
+
+        </div>
+
+        <div class="calendar-fallback">
+
+            Having trouble loading the calendar?
+
+            <a
+                href="https://calendly.com/randy-gooddemandhq/30min"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                Book directly here.
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div>
+
+                <img
+                    class="footer-logo"
+                    src="assets/logo.png"
+                    alt="Good Demand"
+                >
+
+                <p>
+
+                    Custom AI agents built for roofing companies.
+
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h3>Good Demand</h3>
+
+                <a href="#solutions">Our Solutions</a>
+
+                <a href="#how-it-works">How It Works</a>
+
+                <a href="#resources">Free Resources</a>
+
+                <a href="#faq">FAQ</a>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h3>Get in Touch</h3>
+
+                <a href="#contact">
+
+                    Book Your Free AI Audit
+
+                </a>
+
+                <button data-chat>
+
+                    Chat with Madison
+
+                </button>
+
+                <button id="privacyButton">
+
+                    Privacy Information
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="copyright">
+
+            © <span id="currentYear"></span>
+            Good Demand. All rights reserved.
+
+        </div>
+
+    </div>
+
+</footer>
+
+<!-- =========================================
+     PROMOTIONAL POPUP
+========================================= -->
+
+<dialog id="promoPopup" aria-labelledby="popupTitle">
+
+    <button
+        class="popup-close"
+        data-close
+        autofocus
+        aria-label="Close popup">
+
+        ×
+
+    </button>
+
+    <div class="popup-layout">
+
+        <div>
+
+            <div class="eyebrow" id="popupEyebrow">
+
+                FREE AI AUDIT
+
+            </div>
+
+            <h2 id="popupTitle">
+
+                Ready to Book More Roofing Jobs?
+
+            </h2>
+
+            <p id="popupDescription">
+
+                Discover how AI can help your roofing company
+                turn more customer inquiries into booked inspections
+                without increasing your advertising budget.
+
+            </p>
+
+            <div id="popupFeatures">
+
+                <ul class="feature-list">
+
+                    <li>Capture more customer inquiries.</li>
+
+                    <li>Book more roof inspections.</li>
+
+                    <li>Grow your roofing revenue.</li>
+
+                </ul>
+
+            </div>
+
+            <a
+                class="button"
+                id="popupAction"
+                href="#contact">
+
+                Book Your Free AI Audit →
+
+            </a>
+
+        </div>
+
+        <img
+            class="popup-image"
+            id="popupImage"
+            src="assets/audit-popup.jpg"
+            alt="Roofing business customer success illustration"
+        >
+
+    </div>
+
+</dialog>
+
+<!-- =========================================
+     RESOURCE DIALOG
+========================================= -->
+
+<dialog
+    class="small-dialog"
+    id="resourceDialog"
+    aria-labelledby="resourceTitle">
+
+    <button
+        class="popup-close"
+        data-close
+        aria-label="Close resource">
+
+        ×
+
+    </button>
+
+    <h2 id="resourceTitle"></h2>
+
+    <p>
+
+        This resource is currently being prepared.
+        In the meantime, discover how AI can help your
+        roofing business during a free AI audit.
+
+    </p>
+
+    <a class="button" href="#contact">
+
+        Book Your Free AI Audit →
+
+    </a>
+
+</dialog>
+
+<!-- =========================================
+     PRIVACY DIALOG
+========================================= -->
+
+<dialog
+    class="small-dialog"
+    id="privacyDialog"
+    aria-labelledby="privacyTitle">
+
+    <button
+        class="popup-close"
+        data-close
+        aria-label="Close privacy information">
+
+        ×
+
+    </button>
+
+    <h2 id="privacyTitle">Privacy Information</h2>
+
+    <p>
+
+        Madison is an automated website assistant that uses
+        predefined responses processed in your browser.
+        Chat messages are not transmitted to a Good Demand
+        chat server by this website.
+
+    </p>
+
+    <p>
+
+        Calendly processes appointment information under its
+        own privacy terms. Browser storage is used to manage
+        promotional popup frequency.
+
+    </p>
+
+    <p>
+
+        This website loads external fonts and photographs,
+        which may result in requests to third-party providers.
+
+    </p>
+
+    <a
+        href="https://calendly.com/privacy"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="button button-outline">
+
+        Calendly Privacy Policy
+
+    </a>
+
+</dialog>
+
+<!-- =========================================
+     MADISON WELCOME MESSAGE
+========================================= -->
+
+<div class="chat-dock">
+
+    <div class="chat-invite" id="chatInvite" hidden>
+
+        <button class="invite-message" data-chat>
+
+            Hey there! Curious about how AI can help
+            your roofing business grow? 👋
+
+        </button>
+
+        <button
+            class="invite-dismiss"
+            id="dismissInvite"
+            aria-label="Dismiss welcome message">
+
+            ×
+
+        </button>
+
+    </div>
+
+    <button
+        class="chat-launcher"
+        id="chatLauncher"
+        aria-expanded="false">
+
+        <span class="avatar-wrapper">
+
+            <img
+                class="avatar"
+                src="assets/madison.jpg"
+                alt="Madison"
+            >
+
+        </span>
+
+        <span>
+
+            <strong>Chat with Madison</strong>
+
+            <small>We're online now</small>
+
+        </span>
+
+    </button>
+
+</div>
+
+<!-- =========================================
+     MADISON CHAT WINDOW
+========================================= -->
+
+<aside
+    class="chat-window"
+    id="chatWindow"
+    aria-label="Chat with Madison"
+    hidden>
+
+    <div class="chat-header">
+
+        <span class="avatar-wrapper">
+
+            <img
+                class="avatar"
+                src="assets/madison.jpg"
+                alt="Madison"
+            >
+
+        </span>
+
+        <div>
+
+            <strong>Madison</strong>
+
+            <small>Good Demand</small>
+
+        </div>
+
+        <button id="closeChat" aria-label="Close chat">
+
+            ×
+
+        </button>
+
+    </div>
+
+    <div
+        class="chat-messages"
+        id="chatMessages"
+        aria-live="polite">
+
+        <div class="message">
+
+            Hey there! I'm Madison. How can I help you today?
+
+        </div>
+
+        <div class="quick-replies" id="quickReplies">
+
+            <button data-question="What can the AI agents do?">
+
+                What can the AI agents do?
+
+            </button>
+
+            <button data-question="How much does it cost?">
+
+                How much does it cost?
+
+            </button>
+
+            <button data-question="Can I keep my existing phone number?">
+
+                Can I keep my existing phone number?
+
+            </button>
+
+            <button data-question="How long does setup take?">
+
+                How long does setup take?
+
+            </button>
+
+            <button data-question="Book a free AI audit">
+
+                Book a free AI audit
+
+            </button>
+
+            <button data-question="Speak with Randy">
+
+                Speak with Randy
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <form class="chat-form" id="chatForm">
+
+        <input
+            id="chatInput"
+            type="text"
+            maxlength="500"
+            placeholder="Ask Madison a question..."
+            aria-label="Your message"
+            autocomplete="off"
+            required
+        >
+
+        <button
+            type="submit"
+            id="chatSend"
+            aria-label="Send message">
+
+            →
+
+        </button>
+
+    </form>
+
+    <div class="chat-disclosure">
+
+        Automated assistant · Human assistance by appointment
+
+    </div>
+
+</aside>
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
+<script>
+
+/* =========================================
+   WEBSITE CONFIGURATION
+
+   ADD YOUR VIDEO AND RESOURCE LINKS HERE
+========================================= */
+
+const CONFIG = {
+
+    calendly:
+        "https://calendly.com/randy-gooddemandhq/30min",
+
+    // Add your YouTube, Vimeo or MP4 video URL.
+
+    videoURL: "",
+
+    // Add your free resource landing page links.
+
+    resources: {
+
+        calculator: "",
+
+        automation: "",
+
+        playbook: ""
+
+    },
+
+    // Promotional popup appears after 25 seconds.
+
+    popupDelay: 25000,
+
+    // Madison's welcome message appears after 6 seconds.
+
+    welcomeDelay: 6000,
+
+    // Continuous carousel speed.
+
+    carouselSpeed: .035
+
+};
+
+/* =========================================
+   HELPER FUNCTIONS
+========================================= */
+
+const $ = selector =>
+    document.querySelector(selector);
+
+const $$ = selector =>
+    Array.from(document.querySelectorAll(selector));
+
+const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+).matches;
+
+function readStorage(type,key) {
+
+    try {
+
+        return window[type].getItem(key);
+
+    } catch {
+
+        return null;
+
+    }
+
+}
+
+function writeStorage(type,key,value) {
+
+    try {
+
+        window[type].setItem(key,value);
+
+    } catch {
+
+        // Continue if storage is unavailable.
+
+    }
+
+}
+
+$("#currentYear").textContent =
+    new Date().getFullYear();
+
+/* =========================================
+   HEADER AND MOBILE NAVIGATION
+========================================= */
+
+function updateHeaderHeight() {
+
+    document.documentElement.style.setProperty(
+
+        "--header-height",
+
+        $("#siteHeader").offsetHeight + "px"
+
+    );
+
+}
+
+updateHeaderHeight();
+
+if ("ResizeObserver" in window) {
+
+    new ResizeObserver(updateHeaderHeight)
+        .observe($("#siteHeader"));
+
+}
+
+window.addEventListener(
+    "resize",
+    updateHeaderHeight
+);
+
+$("#mobileMenu").addEventListener("click",() => {
+
+    const open =
+        $("#navigationLinks").classList.toggle("open");
+
+    $("#mobileMenu").setAttribute(
+
+        "aria-expanded",
+
+        String(open)
+
+    );
+
+});
+
+$$("#navigationLinks a").forEach(link => {
+
+    link.addEventListener("click",() => {
+
+        $("#navigationLinks").classList.remove("open");
+
+        $("#mobileMenu").setAttribute(
+
+            "aria-expanded",
+
+            "false"
+
+        );
+
+    });
+
+});
+
+/* =========================================
+   CALENDLY BOOKING
+========================================= */
+
+function goToBooking() {
+
+    writeStorage(
+
+        "sessionStorage",
+
+        "gdBookingIntent",
+
+        "1"
+
+    );
+
+    hideInvite();
+
+    closeChat();
+
+    $$("dialog[open]").forEach(dialog =>
+        dialog.close()
+    );
+
+    $("#contact").scrollIntoView({
+
+        behavior: reducedMotion ? "auto" : "smooth"
+
+    });
+
+}
+
+document.addEventListener("click",event => {
+
+    const bookingLink =
+        event.target.closest('a[href="#contact"]');
+
+    if (bookingLink) {
+
+        event.preventDefault();
+
+        goToBooking();
+
+    }
+
+});
+
+/* =========================================
+   VIDEO DEMONSTRATION
+
+   Remains blank until videoURL is added.
+========================================= */
+
+let demoActive = false;
+
+function initializeVideo() {
+
+    if (!CONFIG.videoURL.trim()) return;
+
+    const container = $("#videoContainer");
+
+    try {
+
+        const url = new URL(
+
+            CONFIG.videoURL,
+
+            window.location.href
+
+        );
+
+        const hostname =
+            url.hostname.replace(/^www\./,"");
+
+        let videoSource = "";
+
+        let videoType = "";
+
+        if (hostname === "youtu.be") {
+
+            const id = url.pathname.split("/")[1];
+
+            if (/^[\w-]{11}$/.test(id)) {
+
+                videoSource =
+                    "https://www.youtube.com/embed/" + id;
+
+                videoType = "iframe";
+
+            }
+
+        } else if (
+
+            hostname === "youtube.com" ||
+            hostname === "m.youtube.com" ||
+            hostname === "youtube-nocookie.com"
+
+        ) {
+
+            const id =
+                url.searchParams.get("v") ||
+                url.pathname.split("/")[2];
+
+            if (/^[\w-]{11}$/.test(id || "")) {
+
+                videoSource =
+                    "https://www.youtube.com/embed/" + id;
+
+                videoType = "iframe";
+
+            }
+
+        } else if (
+
+            hostname === "vimeo.com" ||
+            hostname === "player.vimeo.com"
+
+        ) {
+
+            const id =
+                url.pathname.split("/").filter(Boolean).pop();
+
+            if (/^\d+$/.test(id || "")) {
+
+                videoSource =
+                    "https://player.vimeo.com/video/" + id;
+
+                videoType = "iframe";
+
+            }
+
+        } else if (
+
+            /\.(mp4|webm|ogg)$/i.test(url.pathname) &&
+            ["https:","http:","file:"].includes(url.protocol)
+
+        ) {
+
+            videoSource = url.href;
+
+            videoType = "video";
+
+        }
+
+        if (!videoSource) return;
+
+        const player =
+            document.createElement(videoType);
+
+        player.src = videoSource;
+
+        if (videoType === "iframe") {
+
+            player.title =
+                "Good Demand AI demonstration";
+
+            player.allow =
+                "autoplay; encrypted-media; picture-in-picture; fullscreen";
+
+            player.allowFullscreen = true;
+
+            player.loading = "lazy";
+
+            if ("IntersectionObserver" in window) {
+
+                new IntersectionObserver(entries => {
+
+                    demoActive =
+                        entries.some(entry =>
+                            entry.isIntersecting
+                        );
+
+                },{
+
+                    threshold: .25
+
+                }).observe(container);
+
+            }
+
+        } else {
+
+            player.controls = true;
+
+            player.playsInline = true;
+
+            player.preload = "metadata";
+
+            player.addEventListener("play",() => {
+
+                demoActive = true;
+
+            });
+
+            player.addEventListener("pause",() => {
+
+                demoActive = false;
+
+            });
+
+            player.addEventListener("ended",() => {
+
+                demoActive = false;
+
+            });
+
+        }
+
+        container.appendChild(player);
+
+    } catch {
+
+        console.warn(
+            "Invalid demonstration video URL."
+        );
+
+    }
+
+}
+
+initializeVideo();
+
+/* =========================================
+   SIX FINAL AI AGENTS
+
+   Approved purple graphics
+========================================= */
+
+const agents = [
+
+    {
+
+        title: "AI Receptionist",
+
+        image: "assets/agent-receptionist.png",
+
+        description:
+            "Answer incoming customer calls 24/7, qualify homeowners and capture opportunities even when your team is unavailable.",
+
+        button: "Capture More Calls"
+
+    },
+
+    {
+
+        title: "AI Speed to Lead",
+
+        image: "assets/agent-speed-to-lead.png",
+
+        description:
+            "Respond to new roofing inquiries instantly and engage homeowners before they move on to your competitors.",
+
+        button: "Respond Faster"
+
+    },
+
+    {
+
+        title: "AI Appointment Setter",
+
+        image: "assets/agent-appointment-setter.png",
+
+        description:
+            "Automatically qualify homeowners and schedule roof inspections directly on your company's calendar.",
+
+        button: "Book More Inspections"
+
+    },
+
+    {
+
+        title: "AI Lead Reactivation",
+
+        image: "assets/agent-lead-reactivation.png",
+
+        description:
+            "Reconnect with eligible past inquiries, revive old roofing leads and uncover new sales opportunities.",
+
+        button: "Revive Old Leads"
+
+    },
+
+    {
+
+        title: "AI Review Generation",
+
+        image: "assets/agent-review-generation.png",
+
+        description:
+            "Automatically request honest customer reviews after completed roofing jobs and help build your online reputation.",
+
+        button: "Get More Reviews"
+
+    },
+
+    {
+
+        title: "AI CRM",
+
+        image: "assets/agent-crm.png",
+
+        description:
+            "Keep customer information, appointments, estimates, follow-ups and sales opportunities organized in one place.",
+
+        button: "Simplify My Business"
+
+    }
+
+];
+
+const agentTrack = $("#agentTrack");
+
+const agentViewport = $("#agentViewport");
+
+function buildAgentCard(agent,duplicate = false) {
+
+    const card =
+        document.createElement("article");
+
+    card.className = "agent-card";
+
+    if (duplicate) {
+
+        card.setAttribute("aria-hidden","true");
+
+    }
+
+    card.innerHTML = `
+
+        <img
+            class="agent-image"
+            src="${agent.image}"
+            alt="${agent.title} demonstration"
+            decoding="async"
+            loading="${duplicate ? "lazy" : "eager"}"
+            draggable="false"
+        >
+
+        <div class="agent-body">
+
+            <h3>${agent.title}</h3>
+
+            <p>${agent.description}</p>
+
+            <a class="button button-blue" href="#contact">
+
+                ${agent.button} →
+
+            </a>
+
+        </div>
+
+    `;
+
+    if (duplicate) {
+
+        card.querySelector("a").tabIndex = -1;
+
+    }
+
+    return card;
+
+}
+
+/* Repeat the cards for seamless scrolling. */
+
+for (let copy = 0; copy < 3; copy++) {
+
+    agents.forEach(agent => {
+
+        agentTrack.appendChild(
+
+            buildAgentCard(agent,copy > 0)
+
+        );
+
+    });
+
+}
+
+/* =========================================
+   CONTINUOUS ROLODEX CAROUSEL
+
+   Does not pause when hovered.
+   Supports arrows and mobile swiping.
+========================================= */
+
+let carouselPosition = 0;
+
+let previousFrame = 0;
+
+let carouselPaused = reducedMotion;
+
+let carouselFocused = false;
+
+let dragging = false;
+
+let dragStartX = 0;
+
+let dragStartPosition = 0;
+
+let manualUntil = 0;
+
+let targetPosition = null;
+
+function carouselLength() {
+
+    return (
+
+        agentTrack.children[agents.length].offsetLeft -
+
+        agentTrack.children[0].offsetLeft
+
+    );
+
+}
+
+function cardDistance() {
+
+    return (
+
+        agentTrack.children[1].offsetLeft -
+
+        agentTrack.children[0].offsetLeft
+
+    );
+
+}
+
+function normalizePosition(position) {
+
+    const length = carouselLength();
+
+    if (!length) return 0;
+
+    return (
+
+        (position % length) + length
+
+    ) % length;
+
+}
+
+function renderCarousel() {
+
+    agentTrack.style.transform =
+
+        `translate3d(${
+            -normalizePosition(carouselPosition)
+        }px,0,0)`;
+
+}
+
+function animateCarousel(time) {
+
+    const deltaTime = previousFrame
+
+        ? Math.min(time - previousFrame,50)
+
+        : 0;
+
+    previousFrame = time;
+
+    if (targetPosition !== null && !dragging) {
+
+        const difference =
+            targetPosition - carouselPosition;
+
+        carouselPosition +=
+
+            difference * Math.min(1,deltaTime / 90);
+
+        if (Math.abs(difference) < .5) {
+
+            carouselPosition =
+                normalizePosition(targetPosition);
+
+            targetPosition = null;
+
+        }
+
+        renderCarousel();
+
+    } else if (
+
+        !carouselPaused &&
+        !carouselFocused &&
+        !dragging &&
+        !document.hidden &&
+        !$("dialog[open]") &&
+        time > manualUntil
+
+    ) {
+
+        carouselPosition = normalizePosition(
+
+            carouselPosition +
+
+            deltaTime * CONFIG.carouselSpeed
+
+        );
+
+        renderCarousel();
+
+    }
+
+    requestAnimationFrame(animateCarousel);
+
+}
+
+requestAnimationFrame(animateCarousel);
+
+function moveCarousel(direction) {
+
+    manualUntil = performance.now() + 2200;
+
+    targetPosition =
+
+        (targetPosition ?? carouselPosition) +
+
+        direction * cardDistance();
+
+    if (reducedMotion) {
+
+        carouselPosition =
+            normalizePosition(targetPosition);
+
+        targetPosition = null;
+
+        renderCarousel();
+
+    }
+
+}
+
+$("#previousAgent").addEventListener("click",() => {
+
+    moveCarousel(-1);
+
+});
+
+$("#nextAgent").addEventListener("click",() => {
+
+    moveCarousel(1);
+
+});
+
+/* Accessible pause control */
+
+const pauseButton = $("#pauseCarousel");
+
+function updatePauseButton() {
+
+    pauseButton.textContent = carouselPaused
+
+        ? "Resume carousel"
+
+        : "Pause carousel";
+
+    pauseButton.setAttribute(
+
+        "aria-pressed",
+
+        String(carouselPaused)
+
+    );
+
+}
+
+updatePauseButton();
+
+pauseButton.addEventListener("click",() => {
+
+    carouselPaused = !carouselPaused;
+
+    updatePauseButton();
+
+});
+
+/* Keyboard navigation */
+
+agentTrack.addEventListener("focusin",event => {
+
+    if (event.target.matches(":focus-visible")) {
+
+        carouselFocused = true;
+
+        const card =
+            event.target.closest(".agent-card");
+
+        if (card) {
+
+            targetPosition = null;
+
+            carouselPosition =
+
+                card.offsetLeft -
+
+                agentTrack.children[0].offsetLeft;
+
+            renderCarousel();
+
+        }
+
+    }
+
+});
+
+agentTrack.addEventListener("focusout",event => {
+
+    carouselFocused =
+        agentTrack.contains(event.relatedTarget);
+
+});
+
+/* Mobile swipe */
+
+agentViewport.addEventListener("touchstart",event => {
+
+    dragging = true;
+
+    targetPosition = null;
+
+    dragStartX = event.touches[0].clientX;
+
+    dragStartPosition = carouselPosition;
+
+},{passive:true});
+
+agentViewport.addEventListener("touchmove",event => {
+
+    if (!dragging) return;
+
+    carouselPosition =
+
+        dragStartPosition +
+
+        dragStartX -
+
+        event.touches[0].clientX;
+
+    renderCarousel();
+
+},{passive:true});
+
+function endDrag() {
+
+    dragging = false;
+
+    carouselPosition =
+        normalizePosition(carouselPosition);
+
+    manualUntil = performance.now() + 1800;
+
+}
+
+agentViewport.addEventListener(
+
+    "touchend",
+
+    endDrag
+
+);
+
+agentViewport.addEventListener(
+
+    "touchcancel",
+
+    endDrag
+
+);
+
+window.addEventListener("resize",() => {
+
+    carouselPosition =
+        normalizePosition(carouselPosition);
+
+    targetPosition = null;
+
+    renderCarousel();
+
+});
+
+/* =========================================
+   FREQUENTLY ASKED QUESTIONS
+========================================= */
+
+const faqQuestions = [
+
+    {
+
+        question: "What can your AI agents do?",
+
+        answer:
+            "Our custom AI agents can answer customer calls, respond to new leads, qualify homeowners, schedule inspections, follow up with outstanding estimates, reconnect with eligible past inquiries, request customer reviews and organize customer information."
+
+    },
+
+    {
+
+        question: "How much does it cost?",
+
+        answer:
+            "Pricing depends on the AI agents your roofing company needs, your usage and the systems you want to connect. During your free AI audit, we'll help identify the right solution for your business."
+
+    },
+
+    {
+
+        question: "Can I keep my existing phone number?",
+
+        answer:
+            "In many cases, yes. We review your current phone system and determine the best compatible setup for your business."
+
+    },
+
+    {
+
+        question: "Will this work with my current CRM and calendar?",
+
+        answer:
+            "We connect our agents to compatible CRM and calendar systems. During your AI audit, we'll review your existing tools and determine the best way to integrate them."
+
+    },
+
+    {
+
+        question: "How long does setup take?",
+
+        answer:
+            "Setup depends on your business requirements, the agents you choose and your integrations. We'll establish a launch timeline after reviewing your business."
+
+    },
+
+    {
+
+        question: "What happens during the free AI audit?",
+
+        answer:
+            "We'll review how your roofing business handles customer calls, new inquiries, follow-ups and appointment scheduling. Then we'll identify where AI could help you capture more opportunities and recommend the appropriate agents."
+
+    }
+
+];
+
+const faqList = $("#faqList");
+
+faqQuestions.forEach(item => {
+
+    const details =
+        document.createElement("details");
+
+    details.className = "faq-item";
+
+    const summary =
+        document.createElement("summary");
+
+    summary.textContent = item.question;
+
+    const answer =
+        document.createElement("p");
+
+    answer.textContent = item.answer;
+
+    details.append(summary,answer);
+
+    faqList.appendChild(details);
+
+    details.addEventListener("toggle",() => {
+
+        if (details.open) {
+
+            $$(".faq-item").forEach(other => {
+
+                if (other !== details) {
+
+                    other.open = false;
+
+                }
+
+            });
+
+        }
+
+    });
+
+});
+
+/* =========================================
+   FREE RESOURCE OFFERS
+========================================= */
+
+const resourceOffers = {
+
+    calculator: {
+
+        name: "Roofing Revenue Calculator",
+
+        label: "FREE REVENUE CALCULATOR",
+
+        title:
+            "How Much More Revenue Could Your Roofing Company Generate?",
+
+        description:
+            "Explore how much additional revenue your roofing company could generate by converting more of your existing customer inquiries into roofing jobs.",
+
+        button: "Calculate My Revenue →",
+
+        image: "assets/revenue-calculator.jpg"
+
+    },
+
+    automation: {
+
+        name: "Missed Call Automation",
+
+        label: "FREE AUTOMATION",
+
+        title:
+            "Turn Missed Calls Into Booked Inspections.",
+
+        description:
+            "Discover how automated text messages can help your roofing company reconnect with missed callers and book more roof inspections.",
+
+        button: "Get My Free Automation →",
+
+        image: "assets/missed-call-automation.jpg"
+
+    },
+
+    playbook: {
+
+        name: "The Roofing Sales Playbook",
+
+        label: "FREE SALES PLAYBOOK",
+
+        title:
+            "Turn More Roofing Leads Into Paying Customers.",
+
+        description:
+            "Get practical sales scripts, follow-up templates and strategies to help your roofing company book more inspections and close more jobs.",
+
+        button: "Get My Free Playbook →",
+
+        image: "assets/roofing-sales-playbook.jpg"
+
+    }
+
+};
+
+function openDialog(dialogId) {
+
+    hideInvite();
+
+    closeChat();
+
+    $$("dialog[open]").forEach(dialog => {
+
+        dialog.close();
+
+    });
+
+    $("#" + dialogId).showModal();
+
+}
+
+function openResource(resourceKey) {
+
+    const resource =
+        resourceOffers[resourceKey];
+
+    if (!resource) return;
+
+    writeStorage(
+
+        "sessionStorage",
+
+        "gdResourceClicked",
+
+        "1"
+
+    );
+
+    hideInvite();
+
+    const resourceURL =
+        CONFIG.resources[resourceKey];
+
+    if (resourceURL) {
+
+        window.location.href = resourceURL;
+
+        return;
+
+    }
+
+    $("#resourceTitle").textContent =
+        resource.name;
+
+    openDialog("resourceDialog");
+
+}
+
+$$("[data-resource]").forEach(button => {
+
+    button.addEventListener("click",() => {
+
+        openResource(button.dataset.resource);
+
+    });
+
+});
+
+/* =========================================
+   PROMOTIONAL POPUP
+========================================= */
+
+const auditOffer = {
+
+    label: "FREE AI AUDIT",
+
+    title: "Ready to Book More Roofing Jobs?",
+
+    description:
+        "Discover how AI can help your roofing company turn more customer inquiries into booked inspections without increasing your advertising budget.",
+
+    button: "Book Your Free AI Audit →",
+
+    image: "assets/audit-popup.jpg"
+
+};
+
+function showPromotionalPopup() {
+
+    if (
+
+        readStorage("sessionStorage","gdPopupShown") ||
+        readStorage("sessionStorage","gdBookingIntent") ||
+        readStorage("sessionStorage","gdResourceClicked") ||
+        !$("#chatWindow").hidden ||
+        $("dialog[open]") ||
+        demoActive
+
+    ) {
+
+        return;
+
+    }
+
+    const availableOffers = [
+
+        "audit",
+
+        ...Object.keys(resourceOffers).filter(
+
+            key => CONFIG.resources[key]
+
+        )
+
+    ];
+
+    let offerIndex = Number(
+
+        readStorage("localStorage","gdOfferIndex") || 0
+
+    );
+
+    if (
+
+        !Number.isFinite(offerIndex) ||
+
+        offerIndex < 0
+
+    ) {
+
+        offerIndex = 0;
+
+    }
+
+    const key =
+
+        availableOffers[
+            Math.floor(offerIndex) % availableOffers.length
+        ];
+
+    const offer = key === "audit"
+
+        ? auditOffer
+
+        : resourceOffers[key];
+
+    $("#popupEyebrow").textContent =
+        offer.label;
+
+    $("#popupTitle").textContent =
+        offer.title;
+
+    $("#popupDescription").textContent =
+        offer.description;
+
+    $("#popupImage").src =
+        offer.image;
+
+    $("#popupImage").alt =
+        offer.title;
+
+    $("#popupImage").classList.toggle(
+
+        "resource-art",
+
+        key !== "audit"
+
+    );
+
+    const popupAction = $("#popupAction");
+
+    popupAction.textContent = offer.button;
+
+    if (key === "audit") {
+
+        $("#popupFeatures").innerHTML = `
+
+            <ul class="feature-list">
+
+                <li>Capture more customer inquiries.</li>
+
+                <li>Book more roof inspections.</li>
+
+                <li>Grow your roofing revenue.</li>
+
+            </ul>
+
+        `;
+
+        popupAction.href = "#contact";
+
+        popupAction.onclick = null;
+
+    } else {
+
+        $("#popupFeatures").innerHTML = "";
+
+        popupAction.href =
+            CONFIG.resources[key];
+
+        popupAction.onclick = () => {
+
+            writeStorage(
+
+                "sessionStorage",
+
+                "gdResourceClicked",
+
+                "1"
+
+            );
+
+        };
+
+    }
+
+    openDialog("promoPopup");
+
+    writeStorage(
+
+        "sessionStorage",
+
+        "gdPopupShown",
+
+        "1"
+
+    );
+
+    writeStorage(
+
+        "localStorage",
+
+        "gdOfferIndex",
+
+        String(offerIndex + 1)
+
+    );
+
+}
+
+setTimeout(
+
+    showPromotionalPopup,
+
+    CONFIG.popupDelay
+
+);
+
+/* Close popup buttons */
+
+$$("[data-close]").forEach(button => {
+
+    button.addEventListener("click",() => {
+
+        button.closest("dialog").close();
+
+    });
+
+});
+
+/* Close popup when clicking outside */
+
+$$("dialog").forEach(dialog => {
+
+    dialog.addEventListener("click",event => {
+
+        if (event.target !== dialog) return;
+
+        const rect =
+            dialog.getBoundingClientRect();
+
+        const outside =
+
+            event.clientX < rect.left ||
+            event.clientX > rect.right ||
+            event.clientY < rect.top ||
+            event.clientY > rect.bottom;
+
+        if (outside) {
+
+            dialog.close();
+
+        }
+
+    });
+
+});
+
+$("#privacyButton").addEventListener("click",() => {
+
+    openDialog("privacyDialog");
+
+});
+
+/* =========================================
+   MADISON CHAT ASSISTANT
+========================================= */
+
+const chatWindow = $("#chatWindow");
+
+const chatMessages = $("#chatMessages");
+
+const chatInput = $("#chatInput");
+
+const chatLauncher = $("#chatLauncher");
+
+let madisonTyping = false;
+
+function scrollChat() {
+
+    chatMessages.scrollTop =
+        chatMessages.scrollHeight;
+
+}
+
+function hideInvite() {
+
+    $("#chatInvite").hidden = true;
+
+    writeStorage(
+
+        "sessionStorage",
+
+        "gdInviteDismissed",
+
+        "1"
+
+    );
+
+}
+
+function openChat() {
+
+    if ($("dialog[open]")) return;
+
+    hideInvite();
+
+    chatWindow.hidden = false;
+
+    chatLauncher.setAttribute(
+
+        "aria-expanded",
+
+        "true"
+
+    );
+
+    scrollChat();
+
+}
+
+function closeChat() {
+
+    chatWindow.hidden = true;
+
+    chatLauncher.setAttribute(
+
+        "aria-expanded",
+
+        "false"
+
+    );
+
+}
+
+chatLauncher.addEventListener("click",() => {
+
+    if (chatWindow.hidden) {
+
+        openChat();
+
+    } else {
+
+        closeChat();
+
+    }
+
+});
+
+$("#closeChat").addEventListener(
+
+    "click",
+
+    closeChat
+
+);
+
+$("#dismissInvite").addEventListener(
+
+    "click",
+
+    hideInvite
+
+);
+
+$$("[data-chat]").forEach(button => {
+
+    button.addEventListener(
+
+        "click",
+
+        openChat
+
+    );
+
+});
+
+/* Automatic welcome message */
+
+setTimeout(() => {
+
+    if (
+
+        !readStorage(
+
+            "sessionStorage",
+
+            "gdInviteDismissed"
+
+        ) &&
+
+        !readStorage(
+
+            "sessionStorage",
+
+            "gdBookingIntent"
+
+        ) &&
+
+        chatWindow.hidden &&
+
+        !$("dialog[open]")
+
+    ) {
+
+        $("#chatInvite").hidden = false;
+
+    }
+
+},CONFIG.welcomeDelay);
+
+function addMessage(text,user = false) {
+
+    const message =
+        document.createElement("div");
+
+    message.className = user
+
+        ? "message user"
+
+        : "message";
+
+    message.textContent = text;
+
+    chatMessages.appendChild(message);
+
+    scrollChat();
+
+}
+
+function addChatAction(text,callback) {
+
+    const action =
+        document.createElement("button");
+
+    action.className = "chat-action";
+
+    action.textContent = text;
+
+    action.addEventListener(
+
+        "click",
+
+        callback
+
+    );
+
+    chatMessages.appendChild(action);
+
+    scrollChat();
+
+}
+
+/* =========================================
+   MADISON TYPING ANIMATION
+========================================= */
+
+function showTypingIndicator() {
+
+    const existing = $("#typingIndicator");
+
+    if (existing) existing.remove();
+
+    const typing =
+        document.createElement("div");
+
+    typing.className =
+        "message typing-indicator";
+
+    typing.id = "typingIndicator";
+
+    typing.setAttribute(
+
+        "aria-label",
+
+        "Madison is typing"
+
+    );
+
+    typing.innerHTML = `
+
+        <span></span>
+
+        <span></span>
+
+        <span></span>
+
+    `;
+
+    chatMessages.appendChild(typing);
+
+    scrollChat();
+
+}
+
+function removeTypingIndicator() {
+
+    const typing = $("#typingIndicator");
+
+    if (typing) typing.remove();
+
+}
+
+function setChatBusy(busy) {
+
+    madisonTyping = busy;
+
+    $$("#quickReplies button").forEach(button => {
+
+        button.disabled = busy;
+
+    });
+
+    $("#chatSend").disabled = busy;
+
+}
+
+function replyWithTyping(text,action = null) {
+
+    setChatBusy(true);
+
+    showTypingIndicator();
+
+    const delay = reducedMotion
+
+        ? 300
+
+        : Math.min(
+
+            2800,
+
+            Math.max(1100,700 + text.length * 8)
+
+        );
+
+    setTimeout(() => {
+
+        removeTypingIndicator();
+
+        addMessage(text);
+
+        if (action === "booking") {
+
+            addChatAction(
+
+                "Book Your Free AI Audit",
+
+                goToBooking
+
+            );
+
+        }
+
+        if (action === "resources") {
+
+            addChatAction(
+
+                "See Free Resources",
+
+                () => {
+
+                    closeChat();
+
+                    $("#resources").scrollIntoView({
+
+                        behavior: reducedMotion
+
+                            ? "auto"
+
+                            : "smooth"
+
+                    });
+
+                }
+
+            );
+
+        }
+
+        setChatBusy(false);
+
+    },delay);
+
+}
+
+/* =========================================
+   MADISON'S PREDEFINED RESPONSES
+========================================= */
+
+function getMadisonReply(question) {
+
+    if (/price|pricing|cost|how much/i.test(question)) {
+
+        return {
+
+            text:
+                "Great question! Pricing depends on which AI agents your roofing company needs and how you'd like them integrated. During your free AI audit, Randy can help you figure out the best setup for your business.",
+
+            action: "booking"
+
+        };
+
+    }
+
+    if (/book.*audit|speak|human|randy|talk to/i.test(question)) {
+
+        return {
+
+            text:
+                "Absolutely! You can book a free AI audit with Randy. He'll walk you through what our AI agents can do for your roofing company and help you identify the best opportunities.",
+
+            action: "booking"
+
+        };
+
+    }
+
+    if (/phone number|keep.*number/i.test(question)) {
+
+        return {
+
+            text:
+                "Yes, in many cases you can keep your existing business phone number. We'll review your current phone system and determine the best way to connect your AI agents."
+
+        };
+
+    }
+
+    if (/how long|setup|set up|launch|install/i.test(question)) {
+
+        return {
+
+            text:
+                "That depends on the agents you need and your existing systems. We'll establish a setup timeline after learning more about your business during your free AI audit.",
+
+            action: "booking"
+
+        };
+
+    }
+
+    if (/playbook|calculator|free resource/i.test(question)) {
+
+        return {
+
+            text:
+                "We have some great free resources for roofing companies, including our Roofing Revenue Calculator, Missed Call Automation and Roofing Sales Playbook.",
+
+            action: "resources"
+
+        };
+
+    }
+
+    if (/review|reputation/i.test(question)) {
+
+        return {
+
+            text:
+                "Our AI Review Generation agent can automatically send review requests after completed roofing jobs, helping you collect more honest customer feedback and strengthen your online reputation."
+
+        };
+
+    }
+
+    if (/crm|integration|integrate/i.test(question)) {
+
+        return {
+
+            text:
+                "Our AI agents can connect to compatible CRM and calendar systems. We'll review the tools you're currently using and figure out the best integration for your business."
+
+        };
+
+    }
+
+    if (/reactivation|reactivat|old lead/i.test(question)) {
+
+        return {
+
+            text:
+                "Our AI Lead Reactivation agent reconnects with eligible homeowners who previously contacted your company. It helps identify people who are still interested in roofing services and creates new opportunities for your team."
+
+        };
+
+    }
+
+    if (/missed call|follow.up|text back/i.test(question)) {
+
+        return {
+
+            text:
+                "Our agents can automatically respond to eligible missed callers and follow up with homeowners about their roofing inquiries or outstanding estimates, based on your business rules and applicable messaging requirements."
+
+        };
+
+    }
+
+    if (/speed to lead|new lead|instant response/i.test(question)) {
+
+        return {
+
+            text:
+                "Our AI Speed to Lead agent responds to new roofing inquiries quickly, engages homeowners and helps move them toward booking an inspection."
+
+        };
+
+    }
+
+    if (/appointment|inspection|calendar|schedule/i.test(question)) {
+
+        return {
+
+            text:
+                "Our AI Appointment Setter can qualify homeowners and schedule roof inspections based on your company's availability and booking rules. It can also notify your team when a new inspection is booked."
+
+        };
+
+    }
+
+    if (/receptionist|answer calls|24\/7/i.test(question)) {
+
+        return {
+
+            text:
+                "Our AI Receptionist answers customer calls around the clock, collects important information, qualifies roofing inquiries and can help schedule inspections."
+
+        };
+
+    }
+
+    if (/guarantee|guaranteed/i.test(question)) {
+
+        return {
+
+            text:
+                "We can't guarantee a specific number of jobs or amount of revenue. Our agents are designed to help you capture more opportunities, but results depend on your lead volume, customer demand and sales process."
+
+        };
+
+    }
+
+    if (/revenue|money|profit/i.test(question)) {
+
+        return {
+
+            text:
+                "Our AI agents are designed to help roofing companies capture more of their existing opportunities. During your free AI audit, we can explore where AI may help your business generate more revenue.",
+
+            action: "booking"
+
+        };
+
+    }
+
+    if (/agents|how.*work|what.*do|services/i.test(question)) {
+
+        return {
+
+            text:
+                "We build custom AI agents that answer calls, respond to leads, book roof inspections, reconnect with past inquiries, request reviews and organize customer information. They work together around the way your roofing company operates."
+
+        };
+
+    }
+
+    if (/^(hi|hey|hello)[!. ]*$/i.test(question)) {
+
+        return {
+
+            text:
+                "Hey there! What would you like to know about our AI agents?"
+
+        };
+
+    }
+
+    return {
+
+        text:
+            "I'd be happy to connect you with Randy to discuss that in more detail. You can book a free AI audit and he'll help answer your questions.",
+
+        action: "booking"
+
+    };
+
+}
+
+function handleQuestion(question) {
+
+    question = question.trim();
+
+    if (!question || madisonTyping) return;
+
+    addMessage(question,true);
+
+    const reply =
+        getMadisonReply(question);
+
+    replyWithTyping(
+
+        reply.text,
+
+        reply.action
+
+    );
+
+}
+
+/* Suggested questions */
+
+$$("[data-question]").forEach(button => {
+
+    button.addEventListener("click",() => {
+
+        handleQuestion(
+
+            button.dataset.question
+
+        );
+
+    });
+
+});
+
+/* Custom typed messages */
+
+$("#chatForm").addEventListener("submit",event => {
+
+    event.preventDefault();
+
+    if (madisonTyping) return;
+
+    const question =
+        chatInput.value.trim();
+
+    if (!question) return;
+
+    chatInput.value = "";
+
+    handleQuestion(question);
+
+});
+
+/* Close chat using Escape */
+
+document.addEventListener("keydown",event => {
+
+    if (event.key === "Escape") {
+
+        closeChat();
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
